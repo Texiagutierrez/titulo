@@ -24,6 +24,8 @@ import { HeaderComponent } from './layouts/full/header/header.component';
 import { BrandingComponent } from './layouts/full/sidebar/branding.component';
 import { AppNavItemComponent } from './layouts/full/sidebar/nav-item/nav-item.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
