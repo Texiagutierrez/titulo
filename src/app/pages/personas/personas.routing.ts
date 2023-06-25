@@ -5,6 +5,7 @@ import { AlumnosComponent } from './alumnos/alumnos.component';
 import { ApoderadosComponent } from './apoderados/apoderados.component';
 import { ProfesoresComponent } from './profesores/profesores.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 export const PersonasRoutes: Routes = [
@@ -26,6 +27,10 @@ export const PersonasRoutes: Routes = [
       {
         path: 'funcionarios',
         component: FuncionariosComponent,
+      },
+      {
+        path: 'profile/:id',
+        component: ProfileComponent,
       },
     ],
   },

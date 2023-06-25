@@ -15,7 +15,7 @@
                                     <img [src]="element.imagePath" alt="users" width="40" class="rounded-circle" />
                                     <div class="m-l-16">
                                         <h6 class="mat-subtitle-1 f-s-14 f-w-600">
-                                            {{ element.uname }}
+                                            {{ element.name }} {{ element.lastname }}
                                         </h6>
                                         <span class="mat-body-1 f-s-12">
                                             {{ element.curso }}
@@ -61,6 +61,17 @@
                             </th>
                             <td mat-cell *matCellDef="let element" class="mat-body-1">
                                 {{ element.direccion }}
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="accion">
+                            <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                                Acción
+                            </th>
+                            <td mat-cell *matCellDef="let element" class="mat-body-1">
+                                <button mat-flat-button color="primary" class="m-t-8" (click)="openProfile(element.rut)">
+                                    Ver
+                                </button>
                             </td>
                         </ng-container>
 

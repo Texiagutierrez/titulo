@@ -16,6 +16,7 @@ import { AlumnosComponent } from './alumnos/alumnos.component';
 import { ProfesoresComponent } from './profesores/profesores.component';
 import { ApoderadosComponent } from './apoderados/apoderados.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -32,7 +33,8 @@ import { FuncionariosComponent } from './funcionarios/funcionarios.component';
     AlumnosComponent,
     ProfesoresComponent,
     ApoderadosComponent,
-    FuncionariosComponent
+    FuncionariosComponent,
+    ProfileComponent
   ],
 })
 export class PersonasModule {}

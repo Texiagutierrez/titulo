@@ -36,6 +36,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./pages/personas/personas.module').then((m) => m.PersonasModule),
       },
+      {
+        path: 'shared',
+        loadChildren: () =>
+          import('./shared/shared.module').then((m) => m.SharedModule),
+      },
     ],
   },
   {
