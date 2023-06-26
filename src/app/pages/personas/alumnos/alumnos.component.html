@@ -1,85 +1,136 @@
-<div class="row">
-    <div class="col">
-        <mat-card class="cardWithShadow">
-            <mat-card-content class="p-24">
-                <mat-card-title>Alumnos</mat-card-title>
-                <div class="table-responsive m-t-16">
-                    <table mat-table [dataSource]="dataSource" class="w-100">
-                        <!-- Position Column -->
-                        <ng-container matColumnDef="assigned">
-                            <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
-                                Alumno
-                            </th>
-                            <td mat-cell *matCellDef="let element">
-                                <div class="d-flex align-items-center">
-                                    <img [src]="element.imagePath" alt="users" width="40" class="rounded-circle" />
-                                    <div class="m-l-16">
-                                        <h6 class="mat-subtitle-1 f-s-14 f-w-600">
-                                            {{ element.name }} {{ element.lastname }}
-                                        </h6>
-                                        <span class="mat-body-1 f-s-12">
-                                            {{ element.curso }}
-                                        </span>
+<mat-card class="cardWithShadow theme-card">
+    <mat-card-header>
+        <mat-card-title class="m-b-0">Búsqueda</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+        <div class="row">
+            <div class="col-lg-6">
+                <mat-card class="b-1 shadow-none">
+                    <mat-card-header>
+                        <mat-card-title>Por Curso</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content class="b-t-1">
+                        <mat-form-field>
+                            <mat-label>Curso</mat-label>
+                            <mat-select>
+                                <mat-option *ngFor="let c of cursosSource"
+                                    (onSelectionChange)="getAlumnosByCurso(c.curso)">
+                                    {{c.curso}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div class="col-lg-6">
+                <mat-card class="b-1 shadow-none">
+                    <mat-card-header>
+                        <mat-card-title>Por Rut</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content class="b-t-1">
+                        <div class="row">
+                            <div class="col">
+                                
+                                    <form [formGroup]="formGroup" (ngSubmit)="getAlumnosByRut(formGroup.value)" class="form">
+                                        <div class="row">
+                                        <div class="col">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>Ingresar Rut</mat-label> 
+                                                <input matInput type="number" formControlName="rut"/>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col">
+                                            <button mat-flat-button color="primary" type="submit" class="m-t-8">Buscar</button>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                        </ng-container>
+                                    </form>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
 
-                        <!-- Name Column -->
-                        <ng-container matColumnDef="name">
-                            <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
-                                Rut
-                            </th>
-                            <td mat-cell *matCellDef="let element" class="mat-body-1">
-                                {{ element.rut }}
-                            </td>
-                        </ng-container>
 
-                        <!-- Weight Column -->
-                        <ng-container matColumnDef="email">
-                            <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
-                                Email
-                            </th>
-                            <td mat-cell *matCellDef="let element" class="mat-body-1">
-                                {{ element.email }}
-                            </td>
-                        </ng-container>
+<mat-card class="cardWithShadow">
+    <mat-card-content class="p-24">
+        <mat-card-title>Alumnos</mat-card-title>
+        <div class="table-responsive m-t-16">
+            <table mat-table [dataSource]="dataSource" class="w-100">
+                <!-- Position Column -->
+                <ng-container matColumnDef="assigned">
+                    <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                        Alumno
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div class="d-flex align-items-center">
+                            <img [src]="element.imagePath" alt="users" width="40" class="rounded-circle" />
+                            <div class="m-l-16">
+                                <h6 class="mat-subtitle-1 f-s-14 f-w-600">
+                                    {{ element.name }} {{ element.lastname }}
+                                </h6>
+                                <span class="mat-body-1 f-s-12">
+                                    {{ element.curso }}
+                                </span>
+                            </div>
+                        </div>
+                    </td>
+                </ng-container>
 
-                        <!-- Symbol Column -->
-                        <ng-container matColumnDef="telefono">
-                            <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
-                                Teléfono
-                            </th>
-                            <td mat-cell *matCellDef="let element" class="mat-body-1">
-                                {{ element.telefono }}
-                            </td>
-                        </ng-container>
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                        Rut
+                    </th>
+                    <td mat-cell *matCellDef="let element" class="mat-body-1">
+                        {{ element.rut }}
+                    </td>
+                </ng-container>
 
-                        <ng-container matColumnDef="direccion">
-                            <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
-                                Dirección
-                            </th>
-                            <td mat-cell *matCellDef="let element" class="mat-body-1">
-                                {{ element.direccion }}
-                            </td>
-                        </ng-container>
+                <!-- Weight Column -->
+                <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                        Email
+                    </th>
+                    <td mat-cell *matCellDef="let element" class="mat-body-1">
+                        {{ element.email }}
+                    </td>
+                </ng-container>
 
-                        <ng-container matColumnDef="accion">
-                            <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
-                                Acción
-                            </th>
-                            <td mat-cell *matCellDef="let element" class="mat-body-1">
-                                <button mat-flat-button color="primary" class="m-t-8" (click)="openProfile(element.rut)">
-                                    Ver
-                                </button>
-                            </td>
-                        </ng-container>
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="telefono">
+                    <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                        Teléfono
+                    </th>
+                    <td mat-cell *matCellDef="let element" class="mat-body-1">
+                        {{ element.telefono }}
+                    </td>
+                </ng-container>
 
-                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-                    </table>
-                </div>
-            </mat-card-content>
-        </mat-card>
-    </div>
-</div>
+                <ng-container matColumnDef="direccion">
+                    <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                        Dirección
+                    </th>
+                    <td mat-cell *matCellDef="let element" class="mat-body-1">
+                        {{ element.direccion }}
+                    </td>
+                </ng-container>
+
+                <ng-container matColumnDef="accion">
+                    <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                        Acción
+                    </th>
+                    <td mat-cell *matCellDef="let element" class="mat-body-1">
+                        <button mat-flat-button color="primary" class="m-t-8" (click)="openProfile(element.rut)">
+                            Ver
+                        </button>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+            </table>
+        </div>
+    </mat-card-content>
+</mat-card>

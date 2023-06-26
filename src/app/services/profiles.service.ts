@@ -12,6 +12,10 @@ export interface productsData {
   rol: string
 }
 
+export interface cursosData {
+  curso: string;
+}
+
 const ELEMENT_DATA: productsData[] = [
   {
     id: 1,
@@ -30,7 +34,7 @@ const ELEMENT_DATA: productsData[] = [
     imagePath: 'assets/images/profile/user-2.jpg',
     name: 'Andrew ',
     lastname: 'McDownland',
-    curso: 'Project Manager',
+    curso: 'Senior Manager',
     rut: 15623152,
     telefono: 24.5,
     direccion: 'Calle asdfasd',
@@ -63,6 +67,21 @@ const ELEMENT_DATA: productsData[] = [
   },
 ];
 
+const CURSOS_DATA: cursosData[] = [
+  {
+    curso: '4°B'
+  },
+  {
+    curso: 'Senior Manager'
+  },
+  {
+    curso: 'Project Manager'
+  },
+  {
+    curso: 'Frontend Engineer',
+  },
+];
+
 @Injectable({
   providedIn: 'root'
 })
@@ -80,5 +99,28 @@ export class ProfilesService {
 
   getProfile(rut: number){
     return ELEMENT_DATA.filter(x => x.rut == rut);
+  }
+
+  getProfileRutAlumno(rut: number){
+    return ELEMENT_DATA.filter(x => x.rut == rut && x.rol == "alumno");
+  }
+  getProfileRutProfesor(rut: number){
+    return ELEMENT_DATA.filter(x => x.rut == rut && x.rol == "profesor");
+  }
+
+  getProfileByCurso(curso: string){
+    return ELEMENT_DATA.filter(x => x.curso == curso && x.rol == "alumno");
+  }
+
+  getProfileProfByCurso(curso: string){
+    return ELEMENT_DATA.filter(x => x.curso == curso && x.rol == "profesor");
+  }
+
+  getCursos(){
+    return CURSOS_DATA;
+  }
+
+  usConectado(id: number){
+    return ELEMENT_DATA.filter(x => x.id == id);
   }
 }
