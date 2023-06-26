@@ -20,65 +20,71 @@ const ELEMENT_DATA: productsData[] = [
   {
     id: 1,
     imagePath: 'assets/images/profile/user-1.jpg',
-    name: 'Pepe',
-    lastname: 'Silvia',
-    curso: '4°B',
-    rut: 15623151,
-    telefono: 39568634,
-    direccion: 'Calle asdfasd',
-    email: 'low',
+    name: 'Texia Iladi',
+    lastname: 'Gutiérrez Cancino',
+    curso: '4° Medio B',
+    rut: 12792620,
+    telefono: 956367257,
+    direccion: 'Mariscadero Alto',
+    email: 'texiailadi@hotmail.com',
     rol: 'alumno'
   },
   {
     id: 2,
     imagePath: 'assets/images/profile/user-2.jpg',
-    name: 'Andrew ',
-    lastname: 'McDownland',
-    curso: 'Senior Manager',
-    rut: 15623152,
-    telefono: 24.5,
-    direccion: 'Calle asdfasd',
-    email: 'medium',
+    name: 'Martin Alejandro',
+    lastname: 'Concha Gutiérrez',
+    curso: '7° Básico A',
+    rut: 23565983,
+    telefono: 967549812,
+    direccion: 'abdón Fuente-alba s/n',
+    email: 'conchagutierrez.martin@edupelluhue.cl',
     rol: 'alumno'
   },
   {
     id: 3,
-    imagePath: 'assets/images/profile/user-3.jpg',
-    name: 'Christopher',
-    lastname: 'Jamil',
-    curso: 'Project Manager',
-    rut: 15623153,
-    telefono: 12.8,
-    direccion: 'Calle asdfasd',
-    email: 'high',
-    rol: 'profesor'
+    imagePath: 'assets/images/profile/user-2.jpg',
+    name: 'Alejandro Ernesto ',
+    lastname: 'Muñoz Muñoz',
+    curso: '7° Básico A',
+    rut: 23565983,
+    telefono: 967549812,
+    direccion: 'Almirante Rivero #781 s/n',
+    email: 'munozmunoz.alejandro@edupelluhue.cl',
+    rol: 'alumno'
   },
   {
     id: 4,
+    imagePath: 'assets/images/profile/user-3.jpg',
+    name: 'Christopher Ignacio',
+    lastname: 'Benavides flores',
+    curso: '7° Básico A',
+    rut: 24987456,
+    telefono: 934123476,
+    direccion: 'Riquelme #001',
+    email: 'benavidesflores.Christopher@edupelluhue.cl',
+    rol: 'profesor'
+  },
+  {
+    id: 5,
     imagePath: 'assets/images/profile/user-4.jpg',
-    name: 'Nirav',
-    lastname: 'Joshi',
-    curso: 'Frontend Engineer',
+    name: 'Marta Ignacia',
+    lastname: 'Ceballo Canales',
+    curso: '4° Medio B',
     rut: 15623154,
     telefono: 2.4,
-    direccion: 'Calle asdfasd',
-    email: 'critical',
+    direccion: 'Calle Arturo Aparicio #501',
+    email: 'ceballoCanales.marta@edupelluhue.cl',
     rol: 'profesor'
   },
 ];
 
 const CURSOS_DATA: cursosData[] = [
   {
-    curso: '4°B'
+    curso: '4° Medio B'
   },
   {
-    curso: 'Senior Manager'
-  },
-  {
-    curso: 'Project Manager'
-  },
-  {
-    curso: 'Frontend Engineer',
+    curso: '7° Básico A'
   },
 ];
 
