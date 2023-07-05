@@ -15,19 +15,29 @@
             </a>
           </div>
 
-          <form class="m-t-30">
+          <form [formGroup]="frmLogin" (ngSubmit)="validateLoginData()" class="m-t-30">
             <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
               >Usuario</mat-label
             >
             <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input matInput />
+              <input matInput id="txtUser" #txtUser formControlName="txtUser" />
+              <mat-error *ngIf="
+              frmLogin.controls['txtUser'].touched && 
+              !frmLogin.controls['txtUser'].valid &&
+              frmLogin.controls['txtUser'].value !== ''
+              ">Error: Debes ingresar un usuario válido</mat-error>
             </mat-form-field>
             <!-- password -->
             <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block"
               >Password</mat-label
             >
             <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input matInput type="password" />
+              <input matInput type="password" id="txtPass" #txtPass formControlName="txtPass" />
+              <mat-error *ngIf="
+              frmLogin.controls['txtPass'].touched && 
+              !frmLogin.controls['txtPass'].valid &&
+              frmLogin.controls['txtPass'].value !== ''
+              ">Error: Debes ingresar un password válido</mat-error>
             </mat-form-field>
 
             <div class="d-flex align-items-center m-b-12">
@@ -37,9 +47,9 @@
                 >Olvide mi Password ?</a
               >
             </div>
-            <a [routerLink]="['/']" mat-flat-button color="primary" class="w-100">
+            <button mat-flat-button color="primary" class="w-100" [disabled]="!frmLogin.valid">
               Ingresar
-            </a>
+            </button>
             <!-- input -->
           </form>
         </mat-card-content>
