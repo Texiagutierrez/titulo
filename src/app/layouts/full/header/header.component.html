@@ -35,12 +35,12 @@
     />
   </button>
   <mat-menu #profilemenu="matMenu" class="topbar-dd cardWithShadow">
-    <button mat-menu-item>
+    <button mat-menu-item (click)="profile()">
       <mat-icon class="d-flex align-items-center"
         ><i-tabler name="user" class="icon-18 d-flex"></i-tabler></mat-icon
       >Perfil
     </button>
-    <button mat-menu-item>
+    <!--<button mat-menu-item (click)="profile()">
       <mat-icon class="d-flex align-items-center"
         ><i-tabler name="mail" class="icon-18 d-flex"></i-tabler></mat-icon
       >Mi Cuenta
@@ -52,11 +52,11 @@
           class="icon-18 d-flex"
         ></i-tabler></mat-icon
       >Mis Tareas
-    </button>
+    </button>-->
 
     <div class="p-x-12 m-t-12">
       <a
-        [routerLink]="['/authentication/login']"
+        (click)="logOut()"
         mat-stroked-button
         color="primary"
         class="w-100"

@@ -2,11 +2,112 @@
 <!-- Simple four boxes Row -->
 <!-- ============================================================== -->
 <mat-card class="cardWithShadow">
-    <mat-card-content>
-      <mat-card-title>Icons</mat-card-title>
-      <mat-card-subtitle class="mat-body-1 m-b-24">Tabler Icons</mat-card-subtitle>
-      <iframe src="https://tabler-icons.io/" title="Tabler Icons" width="100%" height="700px" allowfullscreen frameBorder="0">
-    </iframe>
-    </mat-card-content>
-  </mat-card>
-  
+  <mat-card-content>
+    <mat-card-title>Mantenedor</mat-card-title>
+    <div class="nuevo">
+    <mat-card-subtitle class="mat-body-1 m-b-24">Cursos</mat-card-subtitle><button mat-flat-button color="accent" class="m-t-8 primario" (click)="nuevoCurso()">
+      Agregar Nuevo 
+     </button>
+    </div>
+    <div class="table-responsive m-t-16">
+      
+      <table mat-table [dataSource]="dataSource" class="w-100">
+        <!-- Position Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+            Curso
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="d-flex align-items-center">
+              <div class="m-l-16">
+                <h6 class="mat-subtitle-1 f-s-14 f-w-600">
+                  {{ element.cid }}
+                </h6>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="editar">
+          <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+            Editar
+          </th>
+          <td mat-cell *matCellDef="let element" class="mat-body-1">
+            <button mat-flat-button color="primary" class="m-t-8" (click)="editarCurso(element.rut)">
+              Editar
+            </button>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="eliminar">
+          <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+            Eliminar
+          </th>
+          <td mat-cell *matCellDef="let element" class="mat-body-1">
+            <button mat-flat-button color="primary" class="m-t-8" (click)="eliminarCurso(element.rut)">
+              Eliminar
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<!-- ============================================================== -->
+<!-- Simple four boxes Row -->
+<!-- ============================================================== -->
+
+<mat-card class="cardWithShadow">
+  <mat-card-content>
+    <mat-card-title>Mantenedor</mat-card-title>
+    <div class="nuevo">
+    <mat-card-subtitle class="mat-body-1 m-b-24">Asignaturas</mat-card-subtitle><button mat-flat-button color="accent" class="m-t-8" (click)="nuevaAsignatura()">
+      Agregar Nuevo 
+     </button></div>
+    <div class="table-responsive m-t-16">
+      
+      <table mat-table [dataSource]="dataSource2" class="w-100">
+        <!-- Position Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+            Asignatura
+          </th>
+          <td mat-cell *matCellDef="let element">
+            <div class="d-flex align-items-center">
+              <div class="m-l-16">
+                <h6 class="mat-subtitle-1 f-s-14 f-w-600">
+                  {{ element.aid }}
+                </h6>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="editar">
+          <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+            Editar
+          </th>
+          <td mat-cell *matCellDef="let element" class="mat-body-1">
+            <button mat-flat-button color="primary" class="m-t-8" (click)="editarAsignatura(element.rut)">
+              Editar
+            </button>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="eliminar">
+          <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+            Eliminar
+          </th>
+          <td mat-cell *matCellDef="let element" class="mat-body-1">
+            <button mat-flat-button color="primary" class="m-t-8" (click)="eliminarAsignatura(element.rut)">
+              Eliminar
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns2"></tr>
+      </table>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -11,6 +11,8 @@ import * as TablerIcons from 'angular-tabler-icons/icons';
 import { ExtraRoutes } from './extra.routing';
 import { AppIconsComponent } from './icons/icons.component';
 import { AppSamplePageComponent } from './sample-page/sample-page.component';
+import { AddAsignaturaComponent } from './addAsignatura/add-asignatura/add-asignatura.component';
+import { AddCursoComponent } from './addCurso/add-curso/add-curso.component';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { AppSamplePageComponent } from './sample-page/sample-page.component';
   ],
   declarations: [
     AppIconsComponent,
-    AppSamplePageComponent
+    AppSamplePageComponent,
+    AddAsignaturaComponent,
+    AddCursoComponent
   ],
 })
 export class ExtraModule {}

@@ -53,18 +53,18 @@ const ELEMENT_DATA: productsData[] = [
 })
 export class ProfileComponent implements OnInit {
 
-  rut: number;
+  rut: string;
 
   constructor(private pS: ProfilesService, private route: ActivatedRoute, private router: Router){}
 
   perfil = {
-    id: 0,
+    id: '',
     imagePath: 'assets/images/profile/user-1.jpg',
     name: '',
     lastname: ' ',
     curso: ' ',
-    rut: 0,
-    telefono: 0,
+    rut: '',
+    telefono: '',
     direccion: '',
     email: '',
     rol: ''
@@ -107,7 +107,7 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  getPerfil(id: number){
+  getPerfil(id: string){
     console.log('llega rut: ', id)
     return this.pS.getProfile(id);
   }

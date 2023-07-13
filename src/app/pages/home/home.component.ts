@@ -16,6 +16,8 @@ import {
   ApexMarkers,
   ApexResponsive,
 } from 'ng-apexcharts';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 interface month {
   value: string;
@@ -45,12 +47,13 @@ export interface salesOverviewChart {
 export class HomeComponent implements OnInit{
   @ViewChild('chart') chart: ChartComponent = Object.create(null);
   public salesOverviewChart!: Partial<salesOverviewChart> | any;
+  locStoUid: string = '';
   months: month[] = [
     { value: 'mar', viewValue: 'Marzo 2023' },
     { value: 'abr', viewValue: 'Abril 2023' },
     { value: 'jun', viewValue: 'Junio 2023' },
   ];
-  constructor(private pS: ProfilesService){
+  constructor(private pS: ProfilesService, private auth: AuthService, private router: Router){
     this.salesOverviewChart = {
       series: [
         {
@@ -143,22 +146,35 @@ export class HomeComponent implements OnInit{
 
   }
   perfil = {
-    id: 0,
+    uid: '',
     imagePath: 'assets/images/profile/user-1.jpg',
     name: '',
     lastname: ' ',
     curso: ' ',
-    rut: 0,
-    telefono: 0,
+    rut: '',
+    telefono: '',
     direccion: '',
     email: '',
     rol: ''
   }
 
-  ngOnInit(): void {
+  tmpItems: any = [];
+
+  ngOnInit() {
+
+    let logged: any = this.auth.checkLogin();
+    if(logged.admin == false && logged.logged == false){
+      this.router.navigate(['authentication/login']);
+    }
     let tmp = this.getPerfil();
-    console.log('valor de tmp: ', tmp);
-    this.perfil = {
+    console.log('items', tmp);
+
+    this.pS.getPersonas().subscribe((res: any) => {
+      this.tmpItems = res;
+      console.log('data', this.tmpItems);
+    });
+    
+    /*this.perfil = {
       id: tmp[0].id,
       imagePath: tmp[0].imagePath,
       name: tmp[0].name,
@@ -169,10 +185,14 @@ export class HomeComponent implements OnInit{
       direccion: tmp[0].direccion,
       email: tmp[0].email,
       rol: tmp[0].rol
-    }
+    }*/
   }
 
   getPerfil(){
-    return this.pS.usConectado(1);
+    let tmp = this.pS.getPersona().subscribe(res => 
+      console.log('dentro', res)
+    );
+    return tmp;
   }
 }
+

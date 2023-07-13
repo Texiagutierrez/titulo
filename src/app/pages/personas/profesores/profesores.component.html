@@ -14,8 +14,8 @@
                             <mat-label>Curso</mat-label>
                             <mat-select>
                                 <mat-option *ngFor="let c of cursosSource"
-                                    (onSelectionChange)="getProfesoresByCurso(c.curso)">
-                                    {{c.curso}}
+                                    (onSelectionChange)="getProfesoresByCurso(c.cid)">
+                                    {{c.cid}}
                                 </mat-option>
                             </mat-select>
                         </mat-form-field>
@@ -56,7 +56,11 @@
 </mat-card>
 <mat-card class="cardWithShadow">
     <mat-card-content class="p-24">
-        <mat-card-title>Profesores</mat-card-title>
+        <div class="nuevo">
+            <mat-card-title>Profesores</mat-card-title><button mat-flat-button color="accent" class="m-t-8" (click)="nuevoProfesor()">
+                Agregar Nuevo 
+               </button>
+        </div>
         <div class="table-responsive m-t-16">
             <table mat-table [dataSource]="dataSource" class="w-100">
                 <!-- Position Column -->

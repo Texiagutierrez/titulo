@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 @Component({
   selector: 'app-alumnos',
   templateUrl: './alumnos.component.html',
-  encapsulation: ViewEncapsulation.None,
+  styleUrls: ['./alumnos.component.scss'],
 })
 export class AlumnosComponent implements OnInit {
   formGroup: FormGroup;
@@ -26,13 +26,16 @@ export class AlumnosComponent implements OnInit {
   }
   
   getAlumnos(){
-    return this.pS.getProfileAlumno();
+    return this.pS.getAlumnos().subscribe((res: any) => {
+      this.dataSource = res;
+      console.log('filtrado', this.dataSource);
+    });
   }
 
   getAlumnosByCurso(curso: string){
-    console.log('curso', curso)
-    let tmp: any = this.pS.getProfileByCurso(curso)
-    return this.dataSource = tmp;
+    return this.pS.getAlumnos().subscribe((res: any) => {
+      this.dataSource = res.filter((x: { cid: string; }) => x.cid == curso);
+    });
   }
 
   getAlumnosByRut(formulario: any){
@@ -47,7 +50,15 @@ export class AlumnosComponent implements OnInit {
   }
 
   getCur(){
-    return this.pS.getCursos();
+    return this.pS.getCursos().subscribe((res: any) => {
+      this.cursosSource = res;
+      
+      console.log('filtrado', this.cursosSource);
+    }); 
+  }
+
+  nuevoAlumno(){
+    this.router.navigate(['personas/nuevo-alumno']);
   }
 
 }

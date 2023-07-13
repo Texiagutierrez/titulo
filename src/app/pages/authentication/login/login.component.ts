@@ -21,7 +21,12 @@ export class AppSideLoginComponent {
     ]),
   })
 
+  txtReset: string = 'Se ha enviado un correo a su casilla para reestablecer la contraseña'
   constructor(private auth: AuthService, private router: Router) {}
+
+  get f(){
+    return this.frmLogin.controls;
+  }
 
 
   validateLoginData(){
@@ -30,9 +35,31 @@ export class AppSideLoginComponent {
     }
     else {
       try {
-
+        this.auth.login(this.f.txtUser.value, this.f.txtPass.value)
+        .then(async res => {
+          localStorage.setItem('uid', res.user.uid);
+          localStorage.setItem('email', JSON.stringify(res.user.email));
+          let tmp = await res.user.getIdToken();
+          console.log('token', tmp);
+          localStorage.setItem('token', JSON.stringify(tmp));
+          this.router.navigate(['dashboard']);
+          console.log(res);
+        })
+        .catch(error => console.log(error))
+        //let tmp = this.auth.getLoginData(this.f.txtUser.value, Number(this.f.txtPass.value));
+        /*console.log(tmp[0]);
+        if(tmp.length > 0 ){
+          localStorage.setItem('rol', tmp[0].rol);
+          localStorage.setItem('rut', String(tmp[0].rut));
+        }*/
       }
       catch{}
     }
+  }
+
+  resetPassword(){
+    this.auth.forgot(this.f.txtUser.value)
+    .then()
+    .catch(error => console.log(error))
   }
 }

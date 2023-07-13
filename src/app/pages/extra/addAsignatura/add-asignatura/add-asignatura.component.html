@@ -1,0 +1,29 @@
+<mat-card class="cardWithShadow">
+    <mat-card-content>
+      <mat-card-title>Nueva Asignatura</mat-card-title>
+      <div class="m-t-16">
+        <form [formGroup]="frmIngresar" (ngSubmit)="validateLoginData()" class="m-t-30">
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Nombre</mat-label>
+            <mat-form-field appearance="outline" class="w-100" color="primary">
+                <input matInput type="text" id="aid" #aid formControlName="aid"  />
+                <mat-error *ngIf="
+                frmIngresar.controls['aid'].touched && 
+                !frmIngresar.controls['aid'].valid &&
+                frmIngresar.controls['aid'].value !== ''
+                ">Error: Debes ingresar un nombre válido</mat-error>
+            </mat-form-field>
+            <!-- Apellido -->
+
+            <div class="botones">
+              <button mat-flat-button color="primary" style="width: 40%;" [disabled]="!frmIngresar.valid">
+                  Agregar
+              </button> 
+              <button mat-flat-button color="warn" style="width: 40%;" (click)="volver()">
+                Volver
+            </button></div>
+            <!-- input -->
+        </form>
+        
+      </div>
+    </mat-card-content>
+  </mat-card>

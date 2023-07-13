@@ -6,6 +6,8 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -22,5 +24,22 @@ export class HeaderComponent {
 
   showFiller = false;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private auth: AuthService, private router: Router) {}
+
+  logOut(){
+    this.auth.logout()
+    .then(()=>{
+      localStorage.removeItem('uid');
+      localStorage.removeItem('rut');
+      localStorage.removeItem('rol');
+      localStorage.removeItem('email');
+      localStorage.removeItem('token');
+      this.router.navigate(['authentication/login']);
+    })
+    .catch(error => console.log(error))
+  }
+
+  profile(){
+    this.router.navigate(['dashboard']);
+  }
 }

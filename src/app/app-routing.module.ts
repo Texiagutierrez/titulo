@@ -26,7 +26,7 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'extra',
+        path: 'parametros',
         loadChildren: () =>
           import('./pages/extra/extra.module').then((m) => m.ExtraModule),
       },

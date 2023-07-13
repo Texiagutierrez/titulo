@@ -27,7 +27,11 @@ export class ProfesoresComponent implements OnInit{
   }
 
   getProfesores(){
-    return this.pS.getProfileProfesor();
+    return this.pS.getProfesores().subscribe((res: any) => {
+      this.dataSource = res;
+      
+      console.log('filtrado', this.cursosSource);
+    }); ;
   }
 
   getProfesoresByCurso(curso: string){
@@ -48,6 +52,14 @@ export class ProfesoresComponent implements OnInit{
   }
 
   getCur(){
-    return this.pS.getCursos();
+    return this.pS.getCursos().subscribe((res: any) => {
+      this.cursosSource = res;
+      
+      console.log('filtrado', this.cursosSource);
+    }); 
+  }
+
+  nuevoProfesor(){
+    this.router.navigate(['personas/nuevo-profesor']);
   }
 }

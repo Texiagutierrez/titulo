@@ -20,45 +20,40 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Academico',
     iconName: 'rosette',
-    route: '/ui-components/badge',
+    route: '',
   },
   {
     displayName: 'Evaluaciones',
     iconName: 'poker-chip',
-    route: '/ui-components/chips',
+    route: '',
   },
   {
     displayName: 'CRA',
     iconName: 'list',
-    route: '/ui-components/lists',
+    route: '',
   },
   {
     displayName: 'Inventario',
     iconName: 'layout-navbar-expand',
-    route: '/ui-components/menu',
+    route: '',
   },
   {
     displayName: 'Convivencia',
     iconName: 'tooltip',
-    route: '/ui-components/tooltips',
+    route: '',
   },
   {
     navCap: 'Administración',
   },
   {
-    displayName: 'Login',
-    iconName: 'lock',
-    route: '/authentication/login',
-  },
-  {
     displayName: 'Parametros',
     iconName: 'mood-smile',
-    route: '/extra/icons',
+    route: '/parametros/mantenedor',
   },
   {
     displayName: 'Seguridad',
     iconName: 'aperture',
-    route: '/extra/sample-page',
+    route: '',
   },
 ];
 
