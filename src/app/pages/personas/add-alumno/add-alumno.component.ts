@@ -15,6 +15,10 @@ export class AddAlumnoComponent implements OnInit{
 
   constructor(private auth: AuthService, private router: Router, private pS: ProfilesService, private fb: FormBuilder) {}
   ngOnInit(): void {
+    let logged: any = this.auth.checkLogin();
+    if(logged.admin == false && logged.logged == false){
+      this.router.navigate(['authentication/login']);
+    }
     this.frmIngresarPersona = this.fb.group({
     imagePath: new FormControl('assets/images/profile/user-1.jpg', []),
     name: new FormControl('', [

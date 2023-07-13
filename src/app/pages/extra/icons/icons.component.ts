@@ -17,10 +17,10 @@ export class AppIconsComponent implements OnInit {
 
   ngOnInit(): void {
     let logged: any = this.auth.checkLogin();
-    if(logged.admin == false || logged.logged == false){
+    if(logged.admin == false && logged.logged == false){
       this.router.navigate(['authentication/login']);
     }
-    if(logged.admin == false || logged.logged == true){
+    if(logged.admin == false && logged.logged == true){
       this.router.navigate(['authentication/no-autorizado']);
     }
     console.log('entra?', logged);

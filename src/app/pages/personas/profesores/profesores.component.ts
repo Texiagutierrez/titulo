@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { ProfilesService } from 'src/app/services/profiles.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 
@@ -16,9 +17,13 @@ export class ProfesoresComponent implements OnInit{
   cursosSource: any = [];
   displayedColumns: string[] = ['assigned', 'name', 'email', 'telefono', 'direccion', 'accion'];
 
-  constructor(private pS: ProfilesService, private router: Router, private formBuilder: FormBuilder){}
+  constructor(private auth: AuthService, private pS: ProfilesService, private router: Router, private formBuilder: FormBuilder){}
 
   ngOnInit(): void {
+    let logged: any = this.auth.checkLogin();
+    if(logged.admin == false && logged.logged == false){
+      this.router.navigate(['authentication/login']);
+    }
     this.formGroup = this.formBuilder.group({
       'rut': [null],
     });
